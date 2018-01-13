@@ -14,10 +14,9 @@
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet"> 
 
 	<?php wp_head(); ?>
-</head>
-
+</head> 
 <body>
-	<site class="tcc">
+	<site class="tcc"> 
 		<header class="tcc">
             <crest class="tcc">
                 <hamburger>
