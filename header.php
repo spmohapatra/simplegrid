@@ -14,34 +14,56 @@
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet"> 
 
 	<?php wp_head(); ?>
-</head> 
+</head>
 <body>
-	<site class="tcc"> 
+	<site class="tcc">
+        <input type="checkbox" id="mobile-nav" />
 		<header class="tcc">
-            <crest class="tcc">
-                <hamburger>
-                    <input type="checkbox" />
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <hamtoggle></hamtoggle>
-                </hamburger>
-                
-                <logo><a href="<?php bloginfo('url'); ?>"><img class="img-responsive" src="<?php bloginfo('template_directory'); ?>/images/mohapatra_in.svg" /></a></logo>
+    
+            <label id="hamburger" for="mobile-nav">
+                <div id="hmb-icon">
+                    <span id="hmbspan"></span>
+                    <span id="hmbspan"></span>
+                    <span id="hmbspan"></span>
+                    <span id="hmbspan"></span>
+                </div>
+            </label>
 
-                <navpagetitle>
-                    <p><a href="<?php the_permalink(); ?>"><?php the_time('F j, Y'); ?>&quot;<?php echo get_the_title(); ?>&quot;</a></p>
-                </navpagetitle>
-                
-                <desktopnav class="tcc">
-                    <?php wp_page_menu('show_home=1&menu_class=desktopnavmenu'); ?>
-                    <search>
-                        <form method="get" id="searchbox" action="<?php bloginfo('home_url'); ?>/">
-                            <input type="text" name="s" class="search_field" onblur="this.value=(this.value=='') ? 'Search ' : this.value;" onfocus="this.value=(this.value=='Search') ? '' : this.value;" value="Search" />
-                            <input type="image" class="search_icon" src="<?php bloginfo('template_url'); ?>/images/searchicon.gif" alt="Search"/>
-                        </form>
-                    </search>	
-                </desktopnav>
-            </crest>
-		</header>
+            <logo><a href="<?php bloginfo('url'); ?>"><img class="img-responsive" src="<?php bloginfo('template_directory'); ?>/images/mohapatra_in.svg" /></a></logo>
+
+            <navpagetitle>
+                <p><a href="<?php the_permalink(); ?>"><?php the_time('F j, Y'); ?>&quot;<?php echo get_the_title(); ?>&quot;</a></p>
+            </navpagetitle>
+            
+            <desktopnav class="tcc">
+                <?php 
+                    wp_nav_menu( array(
+                        'menu' => 'desktop-menu', // Serves the desktop menu
+                        'menu_class' => 'desktopnavmenu',
+                        'container_class' => 'desktopnavmenu'
+                    ) );
+                ?>
+            </desktopnav>
+
+            <search>
+                    <form class="search" method="get" id="searchbox" action="<?php bloginfo('home_url'); ?>/">
+                        <div class="search__wrapper">
+                            <input type="text" name="s" placeholder="search for..." class="search__field">
+                            <button type="submit" class="fa fa-search search__icon"></button>
+                        </div>
+                    </form>
+            </search>
+            
+        </header>
+
+        <mobilenav class="tcc">
+            <?php 
+                wp_nav_menu( array(
+                    'menu' => 'mobile-menu', // Serves the mobile menu
+                    'menu_class' => 'mobilenavmenu',
+                    'container_class' => 'mobilenavmenu'
+                ) );
+            ?>
+        </mobilenav>
+
+	

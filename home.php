@@ -6,7 +6,7 @@
 
 		<?php get_header(); ?>
 
-		<content>
+		<content class="tcc">
 			<magazine class="container">
 
 					<?php 
